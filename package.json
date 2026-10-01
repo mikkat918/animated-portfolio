@@ -1,0 +1,21 @@
+{
+  "name": "animated-portfolio",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node server/index.mjs",
+    "build": "vite build",
+    "test": "node --test",
+    "preview": "node server/index.mjs --production",
+    "start": "node server/index.mjs --production"
+  },
+  "dependencies": {
+    "vue": "^3.5.42",
+    "vue-router": "^4.6.4"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.8",
+    "vite": "^8.3.0"
+  }
+}
