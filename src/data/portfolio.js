@@ -1,18 +1,18 @@
 export const profile = {
-  name: "[YOUR NAME]",
-  role: "[DEVELOPER TITLE]",
-  location: "[YOUR LOCATION]",
-  availability: "AVAILABILITY — EDIT THIS STATUS",
+  name: "MD. Rezabuddulla Khondokar Mikkat",
+  role: "Junior Developer",
+  location: "Dhaka, Bangladesh",
+  availability: "Junior Developer · Dhaka, Bangladesh",
   email: "rezabudullakhondokar@gmail.com",
   phone: "01751351624",
-  responseWindow: "[ADD PREFERENCE]",
-  github: "",
+  responseWindow: "",
+  github: "mikkat918",
   linkedin: "",
   intro:
-    "I build thoughtful digital experiences. Add a short, specific introduction here to help visitors understand your focus and the kind of work you enjoy.",
-  currentFocus: "Learning · building · refining",
+    "I’m MD. Rezabuddulla Khondokar Mikkat, a junior developer based in Dhaka. I build web experiences and keep refining the details that make them clear and useful.",
+  currentFocus: "Building web experiences · refining the details",
   about:
-    "I build thoughtful digital experiences. Add a short, specific introduction here to help visitors understand your focus and the kind of work you enjoy.",
+    "I’m a junior developer based in Dhaka, Bangladesh, focused on building clear, responsive web experiences. I enjoy bringing interfaces to life and improving the details that make them easier to use.",
   quote:
     "I care about the point where a useful idea becomes an experience that feels clear, considered, and easy to use.",
 };
@@ -21,35 +21,35 @@ export const principles = [
   {
     title: "Thoughtful interfaces",
     description:
-      "Describe how you approach clarity, usability, and the details people notice.",
+      "Clear hierarchy and considered details help people find their way through an interface.",
   },
   {
     title: "Reliable foundations",
     description:
-      "Add the engineering practices and technical strengths you can confidently speak to.",
+      "Responsive layouts and reusable components give an interface a dependable foundation.",
   },
   {
     title: "Curious by default",
     description:
-      "Share the way you learn, explore ideas, and work through unfamiliar problems.",
+      "Each project is an opportunity to explore ideas and improve the quality of the result.",
   },
 ];
 
 export const skills = [
   {
     title: "Core",
-    note: "Edit to reflect your actual toolkit",
-    items: ["Add a skill", "Add a skill", "Add a skill"],
+    note: "Used in this portfolio",
+    items: ["Vue 3", "JavaScript", "HTML & CSS"],
   },
   {
     title: "Tools",
-    note: "Keep only tools you use",
-    items: ["Add a tool", "Add a tool", "Add a tool"],
+    note: "Project workflow",
+    items: ["GitHub", "Vite", "Responsive UI"],
   },
   {
-    title: "Exploring",
-    note: "Optional learning area",
-    items: ["Add a technology"],
+    title: "Practice",
+    note: "Interface craft",
+    items: ["Accessibility", "Interaction design"],
   },
 ];
 

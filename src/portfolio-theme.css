@@ -1,0 +1,53 @@
+:root {
+  --container: 1220px;
+  --bg: #050816;
+  --surface: rgba(12, 17, 38, 0.78);
+  --surface-soft: rgba(14, 20, 43, 0.72);
+  --glass: rgba(15, 22, 47, 0.7);
+  --glass-strong: rgba(10, 15, 34, 0.94);
+  --line: rgba(190, 202, 255, 0.13);
+  --line-strong: rgba(190, 202, 255, 0.24);
+  --text: #edf0ff;
+  --muted: #a6afcc;
+  --faint: #7e89aa;
+  --mint: #a78bfa;
+  --mint-soft: #c4b5fd;
+  --accent: #a78bfa;
+  --shadow-soft: 0 22px 70px rgba(0, 0, 0, 0.28);
+  color-scheme: dark;
+  font-family: Inter, "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+}
+body, .site-shell { color: #edf0ff; }
+html, body, #app, .site-shell { background-color: #050816 !important; }
+body { background: #050816 !important; }
+body::before {
+  z-index: -1;
+  opacity: 0;
+  background:
+    radial-gradient(ellipse at 17% 12%, rgba(76, 29, 149, 0.23), transparent 40%),
+    radial-gradient(ellipse at 86% 36%, rgba(8, 145, 178, 0.12), transparent 36%),
+    radial-gradient(ellipse at 52% 100%, rgba(91, 33, 182, 0.15), transparent 43%),
+    linear-gradient(145deg, #050816, #080b1b 52%, #050816) !important;
+}
+.site-shell { position: relative; isolation: isolate; }
+.page-intro > p { color: #a6afcc; }
+h1, h2, h3 { color: #f3f4ff; }
+h1 em, h2 em { color: #c4b5fd; }
+.button-primary { color: #fff; background: linear-gradient(125deg, #7c3aed, #5b21b6); }
+.button-primary:hover { color: #fff; background: linear-gradient(125deg, #8b5cf6, #6d28d9); }
+.button-outline { color: #e5e7ff; border-color: rgba(196,181,253,.25); background: rgba(255,255,255,.045); }
+.button-outline:hover { border-color: rgba(34,211,238,.4); background: rgba(34,211,238,.07); }
+.glass-panel, .liquid-glass {
+  border-color: rgba(196,181,253,.16);
+  background: linear-gradient(145deg, rgba(19,25,53,.76), rgba(9,14,33,.73));
+  box-shadow: 0 22px 64px rgba(0,0,0,.28), inset 0 1px rgba(255,255,255,.08);
+}
+.liquid-glass { backdrop-filter: blur(24px) saturate(130%); }
+.skip-link { color: white; background: #6d28d9; }
+@media (max-width: 720px) {
+  .section-wrap { width: min(calc(100% - 36px), 600px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+  [data-reveal] { opacity: 1; transform: none; }
+}
