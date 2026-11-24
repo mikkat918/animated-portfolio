@@ -41,7 +41,7 @@ function failImage() {
 </script>
 
 <template>
-  <article class="feature-project glass-panel">
+  <article class="feature-project glass-surface glass-panel">
     <!-- Project visual -->
     <RouterLink
       class="project-preview"
@@ -69,7 +69,7 @@ function failImage() {
 
             <span class="project-index-label">
               <small>PROJECT INDEX</small>
-              <b>{{ project.id || project.slug }}</b>
+              <b>{{ project.slug || project.name || project.title }}</b>
             </span>
 
             <div class="preview-grid"></div>
@@ -125,7 +125,7 @@ function failImage() {
 
         <!-- Project number -->
         <span class="preview-number" aria-hidden="true">
-          {{ project.id || project.slug }}
+          {{ project.slug || project.name || project.title }}
         </span>
 
         <span class="preview-caption">
@@ -286,7 +286,7 @@ function failImage() {
   z-index: 2;
   left: 22px;
   color: #82918a;
-  font: 7px/1.8 var(--mono);
+  font: 10px/1.5 var(--mono);
   letter-spacing: 0.06em;
 }
 .project-index-label {
@@ -302,7 +302,7 @@ function failImage() {
   bottom: 14px;
   left: auto;
   color: #687873;
-  font-size: 6px;
+  font-size: 10px;
 }
 .preview-grid {
   position: absolute;
@@ -359,7 +359,7 @@ function failImage() {
 }
 .preview-bar span {
   margin-left: auto;
-  font: 6px var(--mono);
+  font: 9px var(--mono);
 }
 .preview-body {
   display: grid;
@@ -426,11 +426,11 @@ function failImage() {
 }
 .project-info-meta .eyebrow {
   margin: 0;
-  font-size: 7px;
+  font-size: 11px;
 }
 .project-info-meta > span {
   color: var(--faint);
-  font: 6px var(--mono);
+  font: 11px/1.4 var(--mono);
   letter-spacing: 0.05em;
 }
 .project-info h3 {
@@ -459,7 +459,7 @@ function failImage() {
   border: 1px solid var(--line);
   border-radius: 4px;
   color: #9ba8a1;
-  font: 7px var(--mono);
+  font: 10px/1.4 var(--mono);
 }
 .project-link {
   margin-top: 3px;
@@ -489,7 +489,7 @@ function failImage() {
     aspect-ratio: 1.25;
   }
   .project-info-meta > span {
-    font-size: 5px;
+    font-size: 10px;
   }
 }
 
@@ -670,7 +670,7 @@ function failImage() {
 
 .project-index-label small {
   color: #94a3b8;
-  font-size: 7px;
+  font-size: 10px;
   font-weight: 800;
   letter-spacing: 0.2em;
 }
@@ -772,7 +772,7 @@ function failImage() {
 
   color: #94a3b8;
 
-  font-size: 6px;
+  font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.08em;
 }
@@ -937,7 +937,7 @@ function failImage() {
   background: rgba(15, 23, 42, 0.7);
   color: #fff;
 
-  font-size: 8px;
+  font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -992,7 +992,7 @@ function failImage() {
   color: #64748b;
 
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  font-size: 7px;
+  font-size: 10px;
   font-weight: 700;
 
   backdrop-filter: blur(10px);
@@ -1007,7 +1007,7 @@ function failImage() {
 
   color: rgba(255, 255, 255, 0.85);
 
-  font-size: 7px;
+  font-size: 10px;
   font-weight: 800;
   letter-spacing: 0.16em;
 
@@ -1046,7 +1046,7 @@ function failImage() {
 
   color: #7c3aed;
 
-  font-size: 8px;
+  font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -1066,7 +1066,7 @@ function failImage() {
 .project-date {
   color: #a1a1aa;
 
-  font-size: 8px;
+  font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.04em;
 }
@@ -1156,7 +1156,7 @@ function failImage() {
   background: rgba(255, 255, 255, 0.46);
   color: #64748b;
 
-  font-size: 7px;
+  font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.05em;
 
@@ -1236,7 +1236,7 @@ function failImage() {
 
   color: #94a3b8;
 
-  font-size: 8px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.04em;
   text-decoration: none;
@@ -1362,7 +1362,7 @@ function failImage() {
   }
 
   .project-date {
-    font-size: 7px;
+    font-size: 10px;
   }
 
   .project-card-actions {
@@ -1409,18 +1409,25 @@ function failImage() {
   margin-top: 12px;
 }
 
-.project-info > p, .project-info-meta span, .project-external-link { color: #a6afcc; }
-.project-info h3 { color: #edf0ff; }
-.project-preview { background: linear-gradient(145deg,#101735,#090d20); }
-.feature-project { background: rgba(12,18,42,.78); box-shadow: 0 18px 48px rgba(0,0,0,.24); }
-.feature-project:hover { box-shadow: 0 24px 58px rgba(0,0,0,.38); }
-.project-index-label, .preview-caption { color: #a6afcc; }
-.project-info-meta .eyebrow { color: #a78bfa; }
-.project-tags li { color: #c7cdec; border-color: rgba(196,181,253,.18); background: rgba(196,181,253,.06); }
-.project-link { color: #dbe3ff; }
-.feature-project { color: #edf0ff !important; border-color: rgba(196,181,253,.17) !important; background: linear-gradient(145deg,rgba(18,24,51,.88),rgba(8,13,31,.88)) !important; box-shadow: 0 22px 58px rgba(0,0,0,.3), inset 0 1px rgba(255,255,255,.07) !important; }
-.feature-project .project-info h3, .feature-project .project-link { color: #edf0ff !important; }
-.feature-project .project-description, .feature-project .project-date { color: #a6afcc !important; }
-.feature-project .project-tags li { color: #d8ddf4 !important; border-color: rgba(196,181,253,.18) !important; background: rgba(196,181,253,.07) !important; }
-.feature-project .project-preview { background: linear-gradient(145deg,#111735,#080d20) !important; }
+.project-info > p, .project-info-meta span, .project-external-link { color: var(--muted); }
+.project-info h3 { color: var(--text); }
+.project-preview { background: var(--bg-secondary); }
+.feature-project { color: var(--text); border-color: var(--line); background: var(--glass-card-bg); box-shadow: var(--glass-card-shadow); }
+.feature-project:hover { box-shadow: var(--shadow-soft); }
+.project-index-label, .preview-caption { color: var(--muted); }
+.project-info-meta .eyebrow { color: var(--accent); }
+.project-tags li { color: var(--theme-accent-soft); border-color: var(--line-strong); background: color-mix(in srgb,var(--accent) 7%,transparent); }
+.project-link { color: var(--text); }
+.feature-project .project-info h3, .feature-project .project-link { color: var(--text); }
+.feature-project .project-description, .feature-project .project-date { color: var(--muted); }
+.feature-project .project-tags li { color: var(--theme-accent-soft); border-color: var(--line-strong); background: color-mix(in srgb,var(--accent) 7%,transparent); }
+.feature-project .project-preview { background: var(--bg-secondary); }
+.feature-project::before { background: radial-gradient(circle at 10% 0%,color-mix(in srgb,var(--accent) 9%,transparent),transparent 30%),radial-gradient(circle at 100% 100%,color-mix(in srgb,var(--accent-soft) 7%,transparent),transparent 32%); }
+.project-info { color: var(--text); background: transparent; }
+.project-status .eyebrow { color: var(--accent); }
+.project-status .status-dot { background: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb,var(--accent) 8%,transparent); }
+.title-mark { color: var(--muted); border-color: var(--line); background: var(--surface); }
+.feature-project:hover .title-mark { color: var(--accent); background: color-mix(in srgb,var(--accent) 8%,var(--surface)); }
+.project-tags li:hover { border-color: var(--line-strong); background: color-mix(in srgb,var(--accent) 12%,var(--surface)); }
+.fallback-art { background: radial-gradient(circle at 20% 15%,color-mix(in srgb,var(--accent) 18%,transparent),transparent 30%),radial-gradient(circle at 85% 80%,color-mix(in srgb,var(--accent-soft) 12%,transparent),transparent 35%),linear-gradient(145deg,var(--bg-secondary),var(--bg)); }
 </style>

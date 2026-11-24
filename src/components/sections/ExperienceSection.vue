@@ -29,7 +29,7 @@ const experience = computed(() => portfolioState.experience || []);
         <article
           v-for="(item, index) in experience"
           :key="item.id || item.title"
-          class="timeline-card glass-panel"
+          class="timeline-card glass-surface glass-panel"
           data-reveal
         >
           <span class="timeline-index">
@@ -89,100 +89,7 @@ const experience = computed(() => portfolioState.experience || []);
   font-size: 15px;
   line-height: 1.85;
 }
-.project-info-meta .eyebrow {
-  margin: 0;
-  font-size: 7px;
-}
-.experience-section {
-  padding-top: 77px;
-}
-.timeline-card {
-  display: grid;
-  grid-template-columns: 27px 1fr auto;
-  align-items: center;
-  gap: 14px;
-  min-height: 97px;
-  padding: 18px 23px;
-  border-radius: 9px;
-  background: linear-gradient(
-    110deg,
-    rgba(223, 238, 228, 0.065),
-    rgba(255, 255, 255, 0.02)
-  );
-  box-shadow: var(--shadow-inset);
-}
-.timeline-card p {
-  margin: 6px 0 0;
-  color: var(--muted);
-  font-size: 9px;
-  line-height: 1.6;
-}
-.timeline {
-  display: grid;
-  gap: 10px;
-}
-.timeline-card {
-  grid-template-columns: 35px 1fr;
-}
-.timeline-index {
-  color: var(--mint);
-  font: 9px var(--mono);
-}
-.timeline-card h3 {
-  margin: 0;
-  font: 500 17px var(--serif);
-}
-.timeline-date {
-  color: var(--mint-soft) !important;
-  font: 8px var(--mono) !important;
-}
-.contact-main .eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  margin: 0 0 17px;
-}
-.contact-main > p:not(.eyebrow) {
-  max-width: 455px;
-  margin: 18px 0 20px;
-  color: var(--muted);
-  font-size: 10px;
-  line-height: 1.75;
-}
-.page-intro .eyebrow, .detail-heading .eyebrow {
-  margin: 0 0 18px;
-}
-.not-found > p:not(.eyebrow) {
-  max-width: 465px;
-  margin: 17px 0 0;
-  color: var(--muted);
-  font-size: 12px;
-  line-height: 1.8;
-}
-.detail-heading .eyebrow span {
-  padding-inline: 6px;
-  color: var(--faint);
-}
-.detail-content section > p:not(.eyebrow) {
-  margin: 0;
-  color: var(--muted);
-  font-size: 11px;
-  line-height: 1.85;
-}
-.detail-content .eyebrow {
-  margin: 0 0 12px;
-  font-size: 8px;
-}
-.not-found .eyebrow {
-  margin: 0 0 18px;
-}
-.assistant-panel .eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  margin: 0 0 6px;
-  font-size: 7px;
-}
+
 @media (max-width: 720px) {
   .section-intro {
     grid-template-columns: 1fr;
@@ -300,13 +207,13 @@ const experience = computed(() => portfolioState.experience || []);
   border-radius: 50%;
   background: #faf8ff;
   color: var(--accent);
-  font-size: 9px;
+  font-size: 11px;
   font-weight: 800;
 }
 .timeline-date {
   margin: 3px 0 0;
   color: #9ca3af;
-  font-size: 9px;
+  font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -323,13 +230,7 @@ const experience = computed(() => portfolioState.experience || []);
   font-size: 13px;
   line-height: 1.7;
 }
-.contact-main > p:not(.eyebrow) {
-  max-width: 580px;
-  margin: 28px 0 0;
-  color: #707884;
-  font-size: 15px;
-  line-height: 1.8;
-}
+
 @media (max-width: 700px) {
 
   .section {
@@ -383,14 +284,12 @@ const experience = computed(() => portfolioState.experience || []);
   }
 }
 
-.section-intro > p, .timeline-card p, .contact-main > p:not(.eyebrow) { color: #a6afcc; }
+.section-intro > p, .timeline-card p,
 .section-intro h2 { color: #f3f4ff; }
 .eyebrow { color: #a78bfa; }
-.project-info-meta .eyebrow { color: #a78bfa; }
 .timeline-card h3 { color: #edf0ff; }
 .experience-section { background: rgba(10,15,35,.5); border-color: rgba(190,202,255,.1); }
 .timeline-index { color: #c4b5fd; background: rgba(20,25,53,.9); }
 .section-intro { position: relative; z-index: 1; }
 .timeline-card { color: #edf0ff !important; border-color: rgba(196,181,253,.16) !important; background: linear-gradient(145deg,rgba(18,24,51,.78),rgba(8,13,31,.76)) !important; box-shadow: 0 20px 58px rgba(0,0,0,.24), inset 0 1px rgba(255,255,255,.07) !important; }
-.section-intro h2 { color: #f3f4ff; }
 </style>

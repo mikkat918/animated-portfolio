@@ -446,7 +446,7 @@ onUnmounted(() => {
   align-items: center;
   gap: 7px;
   margin: 0 0 6px;
-  font-size: 7px;
+  font-size: 10px;
 }
 .assistant-panel h2 {
   margin: 0;
@@ -468,7 +468,7 @@ onUnmounted(() => {
 .assistant-intro {
   margin: 9px 0 13px;
   color: var(--muted);
-  font-size: 9px;
+  font-size: 11px;
   line-height: 1.6;
 }
 .assistant-messages {
@@ -508,7 +508,7 @@ onUnmounted(() => {
 .assistant-message p {
   margin: 5px 0 0;
   color: #c7d0c9;
-  font-size: 9px;
+  font-size: 11px;
   line-height: 1.65;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
@@ -516,7 +516,7 @@ onUnmounted(() => {
 .assistant-error {
   margin: 9px 0 0;
   color: #e7a9a0;
-  font-size: 8px;
+  font-size: 10px;
   line-height: 1.5;
 }
 .assistant-form {
@@ -557,7 +557,7 @@ onUnmounted(() => {
 .assistant-note {
   margin: 8px 0 0;
   color: var(--faint);
-  font: 7px var(--mono);
+  font: 10px/1.5 var(--mono);
 }
 .assistant-panel-enter-active, .assistant-panel-leave-active {
   transition:
@@ -745,7 +745,7 @@ onUnmounted(() => {
   margin: 0 0 4px;
 
   color: #7c3aed;
-  font-size: 8px;
+  font-size: 10px;
   font-weight: 800;
   line-height: 1;
   letter-spacing: 0.18em;
@@ -872,7 +872,7 @@ onUnmounted(() => {
   margin-bottom: 7px;
 
   color: #94a3b8;
-  font-size: 8px;
+  font-size: 10px;
   font-weight: 800;
   letter-spacing: 0.18em;
 }
@@ -945,7 +945,7 @@ onUnmounted(() => {
   padding: 0 4px;
 
   color: #94a3b8;
-  font-size: 7px;
+  font-size: 10px;
   font-weight: 800;
   letter-spacing: 0.18em;
 }
@@ -1056,7 +1056,7 @@ onUnmounted(() => {
   margin: 0 0 5px;
 
   color: #7c3aed;
-  font-size: 8px;
+  font-size: 10px;
   font-weight: 800;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -1086,7 +1086,7 @@ onUnmounted(() => {
   background: rgba(255, 255, 255, 0.52);
   color: #94a3b8;
 
-  font-size: 7px;
+  font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.06em;
 }
@@ -1131,7 +1131,7 @@ onUnmounted(() => {
   padding-left: 2px;
 
   color: #94a3b8;
-  font-size: 7px;
+  font-size: 10px;
   font-weight: 800;
   letter-spacing: 0.16em;
 }
@@ -1209,12 +1209,12 @@ onUnmounted(() => {
 .assistant-error strong {
   display: block;
   margin-bottom: 2px;
-  font-size: 9px;
+  font-size: 11px;
 }
 
 .assistant-error p {
   margin: 0;
-  font-size: 9px;
+  font-size: 11px;
   line-height: 1.5;
   opacity: 0.82;
 }
@@ -1299,7 +1299,7 @@ onUnmounted(() => {
   padding: 0 3px;
 
   color: #cbd5e1;
-  font-size: 7px;
+  font-size: 10px;
   font-variant-numeric: tabular-nums;
 }
 
@@ -1365,7 +1365,7 @@ onUnmounted(() => {
   margin-top: 9px;
 
   color: #a1a1aa;
-  font-size: 7px;
+  font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.09em;
   text-transform: uppercase;
@@ -1397,7 +1397,7 @@ onUnmounted(() => {
   background: rgba(255, 255, 255, 0.55);
   color: #94a3b8;
 
-  font-size: 7px;
+  font-size: 10px;
 }
 
 /* =========================================================
@@ -1540,7 +1540,7 @@ onUnmounted(() => {
 
 .launcher-copy small {
   color: #a78bfa;
-  font-size: 7px;
+  font-size: 10px;
   font-weight: 800;
   letter-spacing: 0.16em;
 }

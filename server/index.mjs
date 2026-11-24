@@ -8,10 +8,12 @@ import {
   principles,
   skills,
   experience,
+  education,
   services,
 } from "../src/data/portfolio.js";
 import { githubProjectConfig } from "../src/data/github-projects.js";
 import { createGitHubProjectService } from "./github-projects.mjs";
+import { createGitHubInsightsService } from "./github-insights.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const isProduction =
@@ -28,6 +30,7 @@ const config = {
   model: process.env.OMNIROUTE_MODEL || env.OMNIROUTE_MODEL || "auto",
   githubUsername:
     process.env.GITHUB_USERNAME || env.GITHUB_USERNAME || "mikkat918",
+  githubToken: process.env.GITHUB_TOKEN || env.GITHUB_TOKEN || "",
   githubCacheTtlMs: Math.min(
     86_400_000,
     Math.max(
@@ -43,6 +46,11 @@ const githubProjects = createGitHubProjectService({
     process.env.GITHUB_PROJECT_CACHE_FILE ||
     env.GITHUB_PROJECT_CACHE_FILE ||
     path.join(root, ".cache", "github-projects.json"),
+  cacheTtlMs: config.githubCacheTtlMs,
+});
+const githubInsights = createGitHubInsightsService({
+  username: config.githubUsername,
+  token: config.githubToken,
   cacheTtlMs: config.githubCacheTtlMs,
 });
 const MAX_BODY_BYTES = 64 * 1024;
@@ -106,7 +114,7 @@ function assistantIsConfigured() {
 async function getPortfolioData() {
   const source = vite
     ? await vite.ssrLoadModule("/src/data/portfolio.js")
-    : { profile, principles, skills, experience, services };
+    : { profile, principles, skills, experience, education, services };
   const syncedProjects = await githubProjects.getProjects({ background: true });
   return {
     profile: { ...source.profile, github: config.githubUsername },
@@ -120,6 +128,7 @@ async function getPortfolioData() {
       syncing: githubProjects.getStatus().inFlight,
     },
     experience: source.experience,
+    education: source.education,
     services: source.services,
   };
 }
@@ -163,10 +172,21 @@ async function handleApi(req, res) {
       ok: true,
       assistantConfigured: assistantIsConfigured(),
       githubProjectsConfigured: Boolean(config.githubUsername),
+      githubContributionsConfigured: Boolean(config.githubToken),
     });
   }
   if (url.pathname === "/api/portfolio" && req.method === "GET") {
     return sendJson(res, 200, await getPortfolioData());
+  }
+  if (url.pathname === "/api/github" && req.method === "GET") {
+    const currentYear = new Date().getUTCFullYear();
+    const requestedYear = Number(url.searchParams.get("year") || currentYear);
+    if (!Number.isInteger(requestedYear) || requestedYear < 2011 || requestedYear > currentYear) {
+      return sendJson(res, 400, {
+        error: `Year must be between 2011 and ${currentYear}.`,
+      });
+    }
+    return sendJson(res, 200, await githubInsights.getInsights(requestedYear));
   }
   if (url.pathname === "/api/projects/refresh" && req.method === "POST") {
     if (

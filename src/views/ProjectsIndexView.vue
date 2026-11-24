@@ -68,7 +68,7 @@ async function refresh() {
       <p>Browse the projects, technologies, and ideas I’ve been working on.</p>
     </header>
 
-    <section v-if="!portfolioState.loaded && !portfolioState.error" class="api-loading" aria-live="polite">
+    <section v-if="!portfolioState.loaded && !portfolioState.error" class="api-loading" role="status">
       <div class="loading-orb"><span></span></div>
       <p class="eyebrow"><i></i> Loading projects</p>
       <p>Preparing the project collection…</p>
@@ -92,18 +92,18 @@ async function refresh() {
       <p v-else-if="portfolioState.projectSync?.error" class="project-sync-error" role="status">The latest sync could not complete. Showing the last available project data.</p>
 
       <form class="project-filters liquid-glass" role="search" aria-label="Filter projects" @submit.prevent>
-        <label class="project-search"><span>Search projects</span><input v-model="query" type="search" placeholder="Name, description, or topic" /></label>
-        <label><span>Technology</span><select v-model="technology"><option value="">All technologies</option><option v-for="item in technologies" :key="item" :value="item">{{ item }}</option></select></label>
-        <label><span>Status</span><select v-model="status"><option value="">All statuses</option><option v-for="item in statuses" :key="item" :value="item">{{ item }}</option></select></label>
-        <label><span>Sort by</span><select v-model="sortBy"><option value="featured">Featured</option><option value="updated">Recently updated</option><option value="created">Recently added</option></select></label>
+        <label class="project-search" for="project-search"><span>Search projects</span><input id="project-search" name="project-search" v-model="query" type="search" placeholder="Name, description, or topic" /></label>
+        <label for="project-technology"><span>Technology</span><select id="project-technology" name="project-technology" v-model="technology"><option value="">All technologies</option><option v-for="item in technologies" :key="item" :value="item">{{ item }}</option></select></label>
+        <label for="project-status"><span>Status</span><select id="project-status" name="project-status" v-model="status"><option value="">All statuses</option><option v-for="item in statuses" :key="item" :value="item">{{ item }}</option></select></label>
+        <label for="project-sort"><span>Sort by</span><select id="project-sort" name="project-sort" v-model="sortBy"><option value="featured">Featured</option><option value="updated">Recently updated</option><option value="created">Recently added</option></select></label>
         <button class="filter-clear" type="button" :disabled="!hasFilters" @click="clearFilters">Clear filters</button>
       </form>
 
-      <p class="project-result-count" aria-live="polite">Showing {{ filteredProjects.length }} of {{ projects.length }} {{ projects.length === 1 ? "project" : "projects" }}</p>
+      <p class="project-result-count" role="status">Showing {{ filteredProjects.length }} of {{ projects.length }} {{ projects.length === 1 ? "project" : "projects" }}</p>
       <div v-if="filteredProjects.length" class="projects-list">
         <ProjectCard v-for="project in filteredProjects" :key="project.id || project.slug" :project="project" />
       </div>
-      <div v-else-if="projects.length" class="empty-projects glass-panel" aria-live="polite">
+      <div v-else-if="projects.length" class="empty-projects glass-panel" role="status">
         <p>No projects match those filters. Try a different search or clear your filters.</p>
         <button class="filter-clear" type="button" @click="clearFilters">Clear filters</button>
       </div>
@@ -161,11 +161,11 @@ async function refresh() {
   padding: 0 11px;
   border: 1px solid var(--line);
   border-radius: 6px;
-  color: var(--text);
-  background: rgba(8, 13, 32, .86);
-  font: 11px "DM Sans", sans-serif;
+  color: var(--theme-text);
+  background: var(--surface);
+  font: 13px "Plus Jakarta Sans", sans-serif;
 }
-.projects-index .project-filters input::placeholder { color: #8794ad; }
+.projects-index .project-filters input::placeholder { color: var(--theme-faint); }
 .projects-index .filter-clear {
   min-height: 39px;
   padding: 0 13px;
@@ -183,7 +183,7 @@ async function refresh() {
 .projects-index .project-sync-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 0 0 14px; }
 .projects-index .project-sync-row p,
 .projects-index .project-sync-error { margin: 0; }
-.projects-index .project-sync-error { margin: -7px 0 14px; color: #e7a9a0; }
+.projects-index .project-sync-error { margin: -7px 0 14px; color: var(--accent); }
 .projects-index .projects-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(14px, 1.6vw, 22px); margin-top: 20px; }
 .projects-index .projects-list :deep(.feature-project) { min-width: 0; min-height: 0; grid-template-columns: minmax(0, 1fr); }
 .projects-index .projects-list :deep(.project-preview) { min-height: 0; aspect-ratio: 1.65; border-right: 0; border-bottom: 1px solid var(--line); }
@@ -210,10 +210,6 @@ async function refresh() {
 @media (max-width: 700px) { .projects-index .page-intro { margin-bottom: 28px; } }
 
 
-.project-result-count, .project-sync-row { color: #a6afcc; }
-.project-filters select, .project-filters input { color: #edf0ff; background: rgba(8,13,32,.86); }
-.project-filters label > span { color: #a6afcc; }
-.empty-projects { background: rgba(12,18,42,.78); }
-.empty-projects { color: #edf0ff !important; border-color: rgba(196,181,253,.16) !important; background: linear-gradient(145deg,rgba(18,24,51,.78),rgba(8,13,31,.76)) !important; box-shadow: 0 20px 58px rgba(0,0,0,.24), inset 0 1px rgba(255,255,255,.07) !important; }
-.detail-page .state-icon, .detail-page .loading-orb { color: #edf0ff !important; border-color: rgba(196,181,253,.17) !important; background: linear-gradient(145deg,rgba(18,24,51,.82),rgba(8,13,31,.82)) !important; box-shadow: 0 22px 58px rgba(0,0,0,.3), inset 0 1px rgba(255,255,255,.07) !important; }
+.project-result-count, .project-sync-row, .project-filters label > span { color: var(--theme-muted); }
+.projects-index .empty-projects { color: var(--theme-text); border-color: var(--glass-card-border); background: var(--glass-card-bg); box-shadow: var(--glass-card-shadow); }
 </style>

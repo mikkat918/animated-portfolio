@@ -10,5 +10,9 @@ export const githubProjectConfig = {
   sort: "updated",
   overrides: {
     "1391128742": { title: "Basa Vara" },
+    "1399891683": {
+      title: "Animated Portfolio",
+      liveUrl: "https://mikkat-portfolio-psi-sage.vercel.app/",
+    },
   },
 };

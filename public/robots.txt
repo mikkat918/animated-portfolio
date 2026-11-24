@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mikkat-portfolio-psi-sage.vercel.app/sitemap.xml

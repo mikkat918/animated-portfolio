@@ -1,0 +1,16 @@
+# MD. Rezabuddulla Khondokar Mikkat
+
+> Personal portfolio of a junior developer based in Dhaka, Bangladesh.
+
+This site presents verified profile, education, skills, thesis title, services, and public GitHub projects. Project descriptions and status are sourced from the developer's public repositories; details not shown on the site are not verified here.
+
+## Pages
+
+- [Home](https://mikkat-portfolio-psi-sage.vercel.app/): Profile, skills, education, thesis, services, and contact details.
+- [Projects](https://mikkat-portfolio-psi-sage.vercel.app/projects): Public project repository summaries.
+
+## Contact
+
+- Email: rezabudullakhondokar@gmail.com
+- GitHub: https://github.com/mikkat918
+- LinkedIn: https://www.linkedin.com/in/rezabadaulla-khondokar-mikkat-b1b855208/?isSelfProfile=true

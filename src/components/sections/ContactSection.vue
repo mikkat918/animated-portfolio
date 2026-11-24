@@ -20,9 +20,6 @@ const socials = computed(() =>
 const emailReady = computed(
   () => profile.value.email && !profile.value.email.startsWith("["),
 );
-const phoneReady = computed(
-  () => profile.value.phone && !profile.value.phone.startsWith("["),
-);
 </script>
 
 <template>
@@ -31,7 +28,7 @@ const phoneReady = computed(
       class="section section-wrap contact-section"
     >
       <div
-        class="contact-panel liquid-glass"
+        class="contact-panel glass-surface liquid-glass"
         data-reveal
       >
         <div class="contact-main">
@@ -98,25 +95,13 @@ const phoneReady = computed(
           </div>
 
           <div>
-            <dt>Phone</dt>
-
-            <dd>
-              <a
-                v-if="phoneReady"
-                :href="`tel:${profile.phone}`"
-              >
-                {{ profile.phone }}
-              </a>
-
-              <span v-else>
-                {{ profile.phone }}
-              </span>
-            </dd>
+            <dt>Location</dt>
+            <dd>{{ profile.location }}</dd>
           </div>
 
           <div>
-            <dt>Location</dt>
-            <dd>{{ profile.location }}</dd>
+            <dt>Availability</dt>
+            <dd>{{ profile.availability }}</dd>
           </div>
         </dl>
       </div>
@@ -148,10 +133,6 @@ const phoneReady = computed(
   width: 22px;
   height: 1px;
   background: var(--mint-soft);
-}
-.project-info-meta .eyebrow {
-  margin: 0;
-  font-size: 7px;
 }
 .contact-section {
   padding-top: 76px;
@@ -201,8 +182,8 @@ const phoneReady = computed(
   line-height: 1.75;
 }
 .contact-main .button {
-  min-height: 41px;
-  font-size: 9px;
+  min-height: 46px;
+  font-size: 14px;
 }
 .contact-socials {
   display: flex;
@@ -210,7 +191,7 @@ const phoneReady = computed(
   gap: 15px;
   margin-top: 19px;
   color: #9eb2a7;
-  font: 8px var(--mono);
+  font: 12px/1.5 var(--mono);
 }
 .contact-socials a:hover {
   color: var(--mint);
@@ -234,52 +215,18 @@ const phoneReady = computed(
 }
 .contact-details dt {
   color: var(--faint);
-  font: 7px var(--mono);
+  font: 11px/1.5 var(--mono);
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 .contact-details dd {
   margin: 0;
   color: #d7ded8;
-  font-size: 9px;
+  font-size: 13px;
   font-weight: 600;
 }
 .contact-details a:hover {
   color: var(--mint);
-}
-.page-intro .eyebrow, .detail-heading .eyebrow {
-  margin: 0 0 18px;
-}
-.not-found > p:not(.eyebrow) {
-  max-width: 465px;
-  margin: 17px 0 0;
-  color: var(--muted);
-  font-size: 12px;
-  line-height: 1.8;
-}
-.detail-heading .eyebrow span {
-  padding-inline: 6px;
-  color: var(--faint);
-}
-.detail-content section > p:not(.eyebrow) {
-  margin: 0;
-  color: var(--muted);
-  font-size: 11px;
-  line-height: 1.85;
-}
-.detail-content .eyebrow {
-  margin: 0 0 12px;
-  font-size: 8px;
-}
-.not-found .eyebrow {
-  margin: 0 0 18px;
-}
-.assistant-panel .eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  margin: 0 0 6px;
-  font-size: 7px;
 }
 @media (max-width: 980px) {
   .contact-panel {
@@ -494,7 +441,7 @@ const phoneReady = computed(
 .contact-details dt {
   margin-bottom: 8px;
   color: #9ca3af;
-  font-size: 8px;
+  font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -568,7 +515,6 @@ const phoneReady = computed(
 
 .contact-main > p:not(.eyebrow), .contact-details dt { color: #a6afcc; }
 .eyebrow { color: #a78bfa; }
-.project-info-meta .eyebrow { color: #a78bfa; }
 .contact-panel { background: rgba(11,17,40,.76); }
 .contact-details dd, .contact-details dd a, .contact-socials a { color: #e5eaff; }
 .contact-socials a { color: #c7cdec; text-decoration-color: rgba(196,181,253,.28); }

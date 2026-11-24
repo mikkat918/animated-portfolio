@@ -28,7 +28,7 @@ const skills = computed(() => portfolioState.skills || []);
         <article
           v-for="(group, index) in skills"
           :key="group.title"
-          class="skill-card clay-card"
+          class="skill-card glass-surface clay-card"
           data-reveal
         >
           <div class="skill-card-meta">
@@ -128,11 +128,11 @@ const skills = computed(() => portfolioState.skills || []);
   align-items: center;
   justify-content: space-between;
   color: var(--mint);
-  font: 8px var(--mono);
+  font: 11px/1.5 var(--mono);
 }
 .skill-card-meta small {
   color: var(--faint);
-  font-size: 7px;
+  font-size: 11px;
 }
 .skill-card h3 {
   margin: 22px 0 14px;
@@ -152,7 +152,7 @@ const skills = computed(() => portfolioState.skills || []);
   align-items: center;
   gap: 6px;
   color: #a4afaa;
-  font-size: 9px;
+  font-size: 12px;
 }
 .skill-card li i {
   width: 4px;
@@ -160,57 +160,7 @@ const skills = computed(() => portfolioState.skills || []);
   border-radius: 50%;
   background: var(--mint-soft);
 }
-.project-info-meta .eyebrow {
-  margin: 0;
-  font-size: 7px;
-}
-.contact-main .eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  margin: 0 0 17px;
-}
-.contact-main > p:not(.eyebrow) {
-  max-width: 455px;
-  margin: 18px 0 20px;
-  color: var(--muted);
-  font-size: 10px;
-  line-height: 1.75;
-}
-.page-intro .eyebrow, .detail-heading .eyebrow {
-  margin: 0 0 18px;
-}
-.not-found > p:not(.eyebrow) {
-  max-width: 465px;
-  margin: 17px 0 0;
-  color: var(--muted);
-  font-size: 12px;
-  line-height: 1.8;
-}
-.detail-heading .eyebrow span {
-  padding-inline: 6px;
-  color: var(--faint);
-}
-.detail-content section > p:not(.eyebrow) {
-  margin: 0;
-  color: var(--muted);
-  font-size: 11px;
-  line-height: 1.85;
-}
-.detail-content .eyebrow {
-  margin: 0 0 12px;
-  font-size: 8px;
-}
-.not-found .eyebrow {
-  margin: 0 0 18px;
-}
-.assistant-panel .eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  margin: 0 0 6px;
-  font-size: 7px;
-}
+
 @media (max-width: 720px) {
   .section-intro {
     grid-template-columns: 1fr;
@@ -360,13 +310,13 @@ const skills = computed(() => portfolioState.skills || []);
   border-radius: 11px;
   background: rgba(255, 255, 255, 0.72);
   color: #737984;
-  font-size: 9px;
+  font-size: 11px;
   font-weight: 800;
   box-shadow: 0 5px 14px rgba(15, 23, 42, 0.05);
 }
 .skill-card-meta small {
   color: #9ca2ab;
-  font-size: 8px;
+  font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.12em;
   text-align: right;
@@ -400,13 +350,7 @@ const skills = computed(() => portfolioState.skills || []);
   border-radius: 50%;
   background: var(--accent);
 }
-.contact-main > p:not(.eyebrow) {
-  max-width: 580px;
-  margin: 28px 0 0;
-  color: #707884;
-  font-size: 15px;
-  line-height: 1.8;
-}
+
 @media (max-width: 1100px) {
 
   .skill-grid {
@@ -451,10 +395,9 @@ const skills = computed(() => portfolioState.skills || []);
   }
 }
 
-.section-intro > p, .contact-main > p:not(.eyebrow) { color: #a6afcc; }
+.section-intro > p,
 .section-intro h2 { color: #f3f4ff; }
 .eyebrow { color: #a78bfa; }
-.project-info-meta .eyebrow { color: #a78bfa; }
 .skills-section { border-color: rgba(190,202,255,.1); }
 .skill-card { color: #edf0ff; border-color: rgba(196,181,253,.18); background: linear-gradient(145deg,rgba(22,28,58,.9),rgba(10,15,35,.88)); box-shadow: inset 0 1px rgba(255,255,255,.07), 0 18px 46px rgba(0,0,0,.22); }
 .skill-card h3 { color: #edf0ff; }
@@ -465,13 +408,6 @@ const skills = computed(() => portfolioState.skills || []);
   border-color: rgba(190,202,255,.1) !important;
 }
 .skill-grid { gap: clamp(14px,2vw,22px); }
-.skill-card {
-  min-height: 270px;
-  border-radius: 24px !important;
-  border-color: rgba(196,181,253,.18) !important;
-  background: linear-gradient(145deg,rgba(20,27,57,.82),rgba(9,14,33,.82)) !important;
-  box-shadow: inset 0 1px rgba(255,255,255,.075),0 22px 54px rgba(0,0,0,.24) !important;
-}
 .skill-card:hover {
   transform: translateY(-5px) !important;
   border-color: rgba(196,181,253,.32) !important;

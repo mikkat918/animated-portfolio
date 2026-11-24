@@ -56,7 +56,7 @@ function scrollTop() {
   grid-column: 1;
   margin: -10px 0 0;
   color: var(--muted);
-  font-size: 9px;
+  font-size: 12px;
 }
 
 .footer-links {
@@ -69,7 +69,7 @@ function scrollTop() {
 
 .footer-links a {
   color: var(--muted);
-  font-size: 9px;
+  font-size: 12px;
   transition: color 180ms;
 }
 
@@ -82,14 +82,14 @@ function scrollTop() {
   padding-top: 13px;
   border-top: 1px solid var(--line);
   color: var(--muted);
-  font: 7px var(--mono);
+  font: 11px/1.5 var(--mono);
 }
 
 @media (max-width: 720px) {
   .site-footer { grid-template-columns: 1fr; gap: 13px; }
   .site-footer > p { margin: -6px 0 0; }
   .footer-links { grid-column: 1; grid-row: auto; flex-wrap: wrap; gap: 17px; }
-  .footer-bottom { gap: 10px; font-size: 6px; }
+  .footer-bottom { gap: 10px; font-size: 11px; }
 }
 
 @media (max-width: 420px) {

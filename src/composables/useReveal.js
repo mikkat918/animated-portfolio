@@ -38,7 +38,9 @@ export function useReveal() {
         }),
       ),
     );
-    mutations.observe(document.querySelector("main") || document.body, {
+    // Route roots are replaced when async project data resolves. Observe the
+    // stable app root so newly rendered content on direct route loads is seen.
+    mutations.observe(document.querySelector("#app") || document.body, {
       childList: true,
       subtree: true,
     });

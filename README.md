@@ -1,6 +1,6 @@
 # Developer portfolio
 
-A Vue 3 portfolio with an editorial dark theme, mint accents, layered glass surfaces, a spatial code hero, and responsive project, experience, services, and contact sections.
+A Vue 3 portfolio with a Carbon Orange visual identity, persistent dark/light themes, a personal hero, GitHub-synced projects, education and thesis details, services, and direct contact links.
 
 ## Run locally
 
@@ -23,14 +23,21 @@ The assistant is hidden until the API reports that the OmniRoute settings are pr
 
 - `GET /api/health` — server and assistant configuration status
 - `GET /api/portfolio` — profile, principles, skills, automatically synced projects, experience, and services
+- `GET /api/github?year=2026` — public GitHub profile, recent public events, and an authenticated contribution calendar when configured
 - `POST /api/projects/refresh` — request a project sync (15-minute cooldown)
 - `POST /api/assistant` — portfolio-grounded chat through OmniRoute
 
 Profile, principles, skills, experience, and services live in `src/data/portfolio.js`. Projects are discovered from public GitHub repositories rather than maintained as a separate hand-written list.
 
+The supplied portrait is stored at `public/image/mikkat-profile.jpg`. A resume was not present during the portfolio audit; place the verified PDF at `public/assets/documents/Mikkat-Resume.pdf` before adding a download link.
+
 ## GitHub project sync
 
 Set `GITHUB_USERNAME` in the server environment (defaults to `mikkat918`). The server discovers public, non-archived repositories owned by that account, follows GitHub pagination, and refreshes the project snapshot every 15 minutes by default. `GITHUB_CACHE_TTL_MS` controls that interval (minimum 60 seconds, maximum 24 hours). The last complete snapshot is persisted under `.cache/` and served if GitHub is temporarily unavailable. No token is needed for public repositories.
+
+The GitHub section also reads the public profile and public events from GitHub's REST API. Daily contribution history uses GitHub's GraphQL `contributionsCollection.contributionCalendar`; set `GITHUB_TOKEN` in the server environment to enable it. Use a token for the `GITHUB_USERNAME` account with only the read access needed to query that account's contribution data. Keep the token server-side, do not use a `VITE_` variable name, and never commit it. Without a token, profile/repository/public-event data remain available and the contribution calendar shows an explicit setup message instead of sample data. The API caches overview and calendar responses using `GITHUB_CACHE_TTL_MS`.
+
+For Vercel, `api/github.js` exposes the profile/activity/contribution endpoint as a server function; add `GITHUB_TOKEN` to the Vercel project's server environment variables to enable the calendar. The local Node server exposes the same endpoint from `server/index.mjs`.
 
 The portfolio repository is excluded by name; this account’s configuration repository is excluded by stable ID in `src/data/github-projects.js`. If you change `GITHUB_USERNAME`, update the account-specific excluded and featured IDs in that file too. It also controls archived repositories and forks, approved public external repositories, and per-repository overrides keyed by repository ID, `owner/name`, or name. Overrides can provide `title`, `description`, `status`, `liveUrl`, `previewImage`, and `featured`. Approved external repositories must be public; private repositories are never read. Forks are included by default (`includeForks: true`).
 

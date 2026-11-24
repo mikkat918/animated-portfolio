@@ -7,6 +7,7 @@ const emptyPortfolio = () => ({
   projects: [],
   projectSync: { syncedAt: null, stale: false, error: false },
   experience: [],
+  education: null,
   services: [],
 });
 
@@ -16,8 +17,20 @@ export const portfolioState = reactive({
   error: null,
 });
 
+export const githubState = reactive({
+  profile: null,
+  events: [],
+  contributions: null,
+  contributionsByYear: {},
+  year: null,
+  loaded: false,
+  loading: false,
+  errors: { profile: "", activity: "", contributions: "" },
+});
+
 let pendingPortfolioRequest;
 let projectSyncPollTimer;
+const pendingGitHubRequests = new Map();
 
 export async function loadPortfolio({ force = false } = {}) {
   if (!force && portfolioState.loaded) return portfolioState;
@@ -97,4 +110,49 @@ export async function getApiHealth() {
   if (!response.ok)
     throw new Error(`Health request failed (${response.status}).`);
   return response.json();
+}
+
+export async function loadGitHubInsights(year = new Date().getUTCFullYear(), { force = false } = {}) {
+  if (githubState.contributionsByYear[year] && !force) {
+    githubState.year = year;
+    githubState.contributions = githubState.contributionsByYear[year];
+    return githubState;
+  }
+  if (pendingGitHubRequests.has(year)) return pendingGitHubRequests.get(year);
+
+  githubState.loading = true;
+  const pending = fetch(`/api/github?year=${encodeURIComponent(year)}`, {
+    headers: { Accept: "application/json" },
+  })
+    .then(async (response) => {
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(result.error || `GitHub request failed (${response.status}).`);
+      githubState.profile = result.profile || null;
+      githubState.events = Array.isArray(result.events) ? result.events : [];
+      githubState.contributions = result.contributions || null;
+      githubState.contributionsByYear[year] = githubState.contributions;
+      githubState.year = year;
+      githubState.errors = {
+        profile: result.errors?.profile || "",
+        activity: result.errors?.activity || "",
+        contributions: result.contributions?.error || "",
+      };
+      githubState.loaded = true;
+      return githubState;
+    })
+    .catch((error) => {
+      githubState.errors = {
+        ...githubState.errors,
+        profile: error instanceof Error ? error.message : "GitHub data is temporarily unavailable.",
+      };
+      githubState.loaded = false;
+      return githubState;
+    })
+    .finally(() => {
+      githubState.loading = false;
+      pendingGitHubRequests.delete(year);
+    });
+
+  pendingGitHubRequests.set(year, pending);
+  return pending;
 }

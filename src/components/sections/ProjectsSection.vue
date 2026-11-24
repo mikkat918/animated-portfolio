@@ -56,7 +56,7 @@ const selectedProjects = computed(() =>
 
       <div
         v-else
-        class="empty-projects glass-panel"
+        class="empty-projects glass-surface glass-panel"
         data-reveal
       >
         <p>No public projects are available yet.</p>
@@ -123,57 +123,7 @@ const selectedProjects = computed(() =>
 .all-projects:hover span {
   transform: translateX(4px);
 }
-.project-info-meta .eyebrow {
-  margin: 0;
-  font-size: 7px;
-}
-.contact-main .eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  margin: 0 0 17px;
-}
-.contact-main > p:not(.eyebrow) {
-  max-width: 455px;
-  margin: 18px 0 20px;
-  color: var(--muted);
-  font-size: 10px;
-  line-height: 1.75;
-}
-.page-intro .eyebrow, .detail-heading .eyebrow {
-  margin: 0 0 18px;
-}
-.not-found > p:not(.eyebrow) {
-  max-width: 465px;
-  margin: 17px 0 0;
-  color: var(--muted);
-  font-size: 12px;
-  line-height: 1.8;
-}
-.detail-heading .eyebrow span {
-  padding-inline: 6px;
-  color: var(--faint);
-}
-.detail-content section > p:not(.eyebrow) {
-  margin: 0;
-  color: var(--muted);
-  font-size: 11px;
-  line-height: 1.85;
-}
-.detail-content .eyebrow {
-  margin: 0 0 12px;
-  font-size: 8px;
-}
-.not-found .eyebrow {
-  margin: 0 0 18px;
-}
-.assistant-panel .eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  margin: 0 0 6px;
-  font-size: 7px;
-}
+
 @media (max-width: 720px) {
   .section-heading {
     grid-template-columns: 1fr;
@@ -275,9 +225,6 @@ const selectedProjects = computed(() =>
 .all-projects span {
   transition: transform 0.3s ease;
 }
-.all-projects:hover span {
-  transform: translateX(4px);
-}
 .home-project-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -311,13 +258,7 @@ const selectedProjects = computed(() =>
   color: #9ca3af;
   font-size: 13px;
 }
-.contact-main > p:not(.eyebrow) {
-  max-width: 580px;
-  margin: 28px 0 0;
-  color: #707884;
-  font-size: 15px;
-  line-height: 1.8;
-}
+
 @media (max-width: 700px) {
 
   .section {
@@ -352,10 +293,9 @@ const selectedProjects = computed(() =>
   }
 }
 
-.section-heading > p, .contact-main > p:not(.eyebrow) { color: #a6afcc; }
+.section-heading > p,
 .section-heading h2 { color: #f3f4ff; }
 .eyebrow { color: #a78bfa; }
-.project-info-meta .eyebrow { color: #a78bfa; }
 .empty-projects { background: rgba(12,18,42,.78); }
 .all-projects { color: #edf0ff; background: rgba(15,22,47,.76); }
 .work-section {
@@ -367,7 +307,6 @@ const selectedProjects = computed(() =>
 }
 
 .empty-projects { color: #edf0ff !important; border-color: rgba(196,181,253,.16) !important; background: linear-gradient(145deg,rgba(18,24,51,.78),rgba(8,13,31,.76)) !important; box-shadow: 0 20px 58px rgba(0,0,0,.24), inset 0 1px rgba(255,255,255,.07) !important; }
-.section-heading h2 { color: #f3f4ff; }
 @media (max-width: 700px) {
   .home-project-grid { grid-template-columns: minmax(0,1fr) !important; }
 }

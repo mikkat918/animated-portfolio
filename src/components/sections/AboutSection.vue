@@ -24,7 +24,7 @@ const principles = computed(() => portfolioState.principles || []);
       </div>
 
       <div class="about-grid">
-        <blockquote class="quote-card glass-panel" data-reveal>
+        <blockquote class="quote-card glass-surface glass-panel" data-reveal>
           <span class="quote-mark">“</span>
 
           <p>
@@ -149,9 +149,6 @@ const principles = computed(() => portfolioState.principles || []);
   height: 1px;
   background: var(--line-strong);
 }
-.principle-list {
-  border-top: 1px solid var(--line);
-}
 .principle-list article {
   display: grid;
   grid-template-columns: 34px 1fr 16px;
@@ -195,60 +192,7 @@ const principles = computed(() => portfolioState.principles || []);
   color: var(--mint);
   transform: translate(2px, -2px);
 }
-.project-info-meta .eyebrow {
-  margin: 0;
-  font-size: 7px;
-}
-.service-list .list-index {
-  align-self: center;
-}
-.contact-main .eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  margin: 0 0 17px;
-}
-.contact-main > p:not(.eyebrow) {
-  max-width: 455px;
-  margin: 18px 0 20px;
-  color: var(--muted);
-  font-size: 10px;
-  line-height: 1.75;
-}
-.page-intro .eyebrow, .detail-heading .eyebrow {
-  margin: 0 0 18px;
-}
-.not-found > p:not(.eyebrow) {
-  max-width: 465px;
-  margin: 17px 0 0;
-  color: var(--muted);
-  font-size: 12px;
-  line-height: 1.8;
-}
-.detail-heading .eyebrow span {
-  padding-inline: 6px;
-  color: var(--faint);
-}
-.detail-content section > p:not(.eyebrow) {
-  margin: 0;
-  color: var(--muted);
-  font-size: 11px;
-  line-height: 1.85;
-}
-.detail-content .eyebrow {
-  margin: 0 0 12px;
-  font-size: 8px;
-}
-.not-found .eyebrow {
-  margin: 0 0 18px;
-}
-.assistant-panel .eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  margin: 0 0 6px;
-  font-size: 7px;
-}
+
 @media (max-width: 720px) {
   .section-intro {
     grid-template-columns: 1fr;
@@ -361,13 +305,11 @@ const principles = computed(() => portfolioState.principles || []);
   width: 250px;
   height: 250px;
   border-radius: 50%;
-  background: rgba(124, 58, 237, 0.07);
   filter: blur(45px);
 }
 .quote-card > p {
   position: relative;
   margin: 25px 0 50px;
-  color: #414854;
   font-family: Georgia, "Times New Roman", serif;
   font-size: clamp(19px, 2vw, 25px);
   line-height: 1.55;
@@ -439,13 +381,7 @@ article:hover > .list-arrow {
   color: var(--accent);
   transform: translate(3px, -3px);
 }
-.contact-main > p:not(.eyebrow) {
-  max-width: 580px;
-  margin: 28px 0 0;
-  color: #707884;
-  font-size: 15px;
-  line-height: 1.8;
-}
+
 @media (max-width: 1100px) {
 
   .about-grid {
@@ -513,17 +449,14 @@ article:hover > .list-arrow {
   }
 }
 
-.section-intro > p, .principle-list p, .contact-main > p:not(.eyebrow) { color: #a6afcc; }
+.section-intro > p, .principle-list p,
 .section-intro h2 { color: #f3f4ff; }
 .eyebrow { color: #a78bfa; }
 .quote-card footer b { color: #edf0ff; }
 .quote-card footer span { color: #9da8c8; }
-.project-info-meta .eyebrow { color: #a78bfa; }
 .principle-list article { border-color: rgba(190,202,255,.13); }
 .principle-list h3 { color: #edf0ff; }
 .section-intro { position: relative; z-index: 1; }
-.quote-card { color: #edf0ff !important; border-color: rgba(196,181,253,.16) !important; background: linear-gradient(145deg,rgba(18,24,51,.78),rgba(8,13,31,.76)) !important; box-shadow: 0 20px 58px rgba(0,0,0,.24), inset 0 1px rgba(255,255,255,.07) !important; }
 .quote-card > p, .principle-list h3 { color: #edf0ff; }
 .principle-list p { color: #a6afcc; }
-.section-intro h2 { color: #f3f4ff; }
 </style>

@@ -30,4 +30,4 @@
 - GitHub API and image handling: `server/github-projects.mjs`
 - Shared reveal animation: `src/composables/useReveal.js`
 - Router: `src/router/index.js`
-- Global tokens, reset, accessibility, and page transitions: `src/style.css` and `src/portfolio-theme.css`
+- Global tokens, reset, shared styles, accessibility, and page transitions: `src/style.css`

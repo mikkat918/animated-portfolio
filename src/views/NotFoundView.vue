@@ -84,5 +84,5 @@
   margin-top: 24px;
 }
 
-.not-found h1 { color: #edf0ff; }
+.not-found h1 { color: var(--text); }
 </style>

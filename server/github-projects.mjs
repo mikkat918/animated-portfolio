@@ -28,7 +28,7 @@ export function createFallbackPreview(title, language = "") {
   const safeTitle = escapeHtml(String(title || "Project").slice(0, 48));
   const safeLanguage = escapeHtml(String(language || "Portfolio project").slice(0, 32));
   return encodeSvg(
-    `<svg xmlns="http://www.w3.org/2000/svg" width="960" height="600" viewBox="0 0 960 600"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#20302c"/><stop offset="1" stop-color="#111817"/></linearGradient></defs><rect width="960" height="600" fill="url(#g)"/><rect x="42" y="42" width="876" height="516" rx="28" fill="#ffffff" fill-opacity=".035" stroke="#b5d8cb" stroke-opacity=".24"/><circle cx="80" cy="82" r="7" fill="#b5d8cb"/><circle cx="106" cy="82" r="7" fill="#b5d8cb" fill-opacity=".55"/><circle cx="132" cy="82" r="7" fill="#b5d8cb" fill-opacity=".3"/><path d="M80 132h800" stroke="#b5d8cb" stroke-opacity=".16"/><text x="80" y="330" fill="#edf3ef" font-family="Arial,sans-serif" font-size="52" font-weight="600">${safeTitle}</text><text x="82" y="386" fill="#b5d8cb" font-family="Arial,sans-serif" font-size="23">${safeLanguage}</text><text x="82" y="510" fill="#a6b6af" font-family="monospace" font-size="16" letter-spacing="3">PROJECT PREVIEW</text></svg>`,
+    `<svg xmlns="http://www.w3.org/2000/svg" width="960" height="600" viewBox="0 0 960 600"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#18120f"/><stop offset="1" stop-color="#0c0c0c"/></linearGradient></defs><rect width="960" height="600" fill="url(#g)"/><rect x="42" y="42" width="876" height="516" rx="28" fill="#ffffff" fill-opacity=".035" stroke="#ff6b35" stroke-opacity=".3"/><circle cx="80" cy="82" r="7" fill="#ff6b35"/><circle cx="106" cy="82" r="7" fill="#ffb86b" fill-opacity=".7"/><circle cx="132" cy="82" r="7" fill="#f5f5f5" fill-opacity=".35"/><path d="M80 132h800" stroke="#ff6b35" stroke-opacity=".2"/><text x="80" y="330" fill="#f5f5f5" font-family="Arial,sans-serif" font-size="52" font-weight="600">${safeTitle}</text><text x="82" y="386" fill="#ffb86b" font-family="Arial,sans-serif" font-size="23">${safeLanguage}</text><text x="82" y="510" fill="#a1a1aa" font-family="monospace" font-size="16" letter-spacing="3">GENERATED PREVIEW</text></svg>`,
   );
 }
 
@@ -137,12 +137,25 @@ function applyCachedConfiguration(projects, config) {
       const fullName = repoUrl ? new URL(repoUrl).pathname.split("/").filter(Boolean).slice(0, 2).join("/") : "";
       const table = normalizeOverrides(config.overrides);
       const repoOverride = table[String(project.id)] || table[fullName] || table[project.name] || {};
+      const title = String(repoOverride.title || project.title || project.name || "Project").slice(0, 120);
+      const language = String(project.language || "Web").slice(0, 80);
+      const fallbackImage = createFallbackPreview(title, language);
+      const replaceGeneratedPreview = (url) =>
+        typeof url === "string" && url.startsWith("data:image/svg+xml,")
+          ? fallbackImage
+          : url;
       return {
         ...project,
-        title: String(repoOverride.title || project.title || project.name || "Project").slice(0, 120),
+        title,
         description: String(repoOverride.description || project.description || "").trim().slice(0, 500),
         status: String(repoOverride.status || project.status || "Repository available").slice(0, 80),
         featured: Boolean(repoOverride.featured ?? (config.featuredRepoIds ? featuredIds.has(String(project.id)) : project.featured)),
+        liveUrl: safeWebUrl(repoOverride.liveUrl || project.liveUrl || project.live),
+        previewImage: replaceGeneratedPreview(project.previewImage),
+        fallbackImage,
+        images: Array.isArray(project.images)
+          ? project.images.map((image) => ({ ...image, url: replaceGeneratedPreview(image.url) }))
+          : project.images,
       };
     });
 }
@@ -196,6 +209,10 @@ function normalizeRepo(repo, config, readme = "", dedicatedPreview = "") {
     liveUrl,
     createdAt: repo.created_at || "",
     updatedAt: repo.updated_at || "",
+    pushedAt: repo.pushed_at || "",
+    stars: Number.isFinite(repo.stargazers_count) ? repo.stargazers_count : 0,
+    forks: Number.isFinite(repo.forks_count) ? repo.forks_count : 0,
+    watchers: Number.isFinite(repo.watchers_count) ? repo.watchers_count : 0,
     featured,
     previewImage: selectedPreview,
     fallbackImage,

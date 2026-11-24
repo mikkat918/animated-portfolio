@@ -94,7 +94,7 @@ const services = computed(() => portfolioState.services || []);
 .list-index {
   padding-top: 3px;
   color: var(--mint-soft);
-  font: 8px var(--mono);
+  font: 11px/1.5 var(--mono);
 }
 .list-arrow {
   color: var(--faint);
@@ -107,92 +107,7 @@ const services = computed(() => portfolioState.services || []);
   color: var(--mint);
   transform: translate(2px, -2px);
 }
-.project-info-meta .eyebrow {
-  margin: 0;
-  font-size: 7px;
-}
-.services-section {
-  padding-top: 78px;
-}
-.service-list {
-  border-top: 1px solid var(--line);
-}
-.service-list article {
-  display: grid;
-  min-height: 72px;
-  grid-template-columns: 44px 1fr 1.1fr 16px;
-  gap: 14px;
-  align-items: center;
-  padding: 14px 5px;
-  border-bottom: 1px solid var(--line);
-  transition:
-    padding 220ms var(--ease),
-    background 220ms;
-}
-.service-list article:hover {
-  padding-inline: 12px;
-  background: rgba(255, 255, 255, 0.016);
-}
-.service-list .list-index {
-  align-self: center;
-}
-.service-list h3 {
-  margin: 0;
-  font: 500 17px var(--serif);
-}
-.service-list p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 9px;
-  line-height: 1.6;
-}
-.contact-main .eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  margin: 0 0 17px;
-}
-.contact-main > p:not(.eyebrow) {
-  max-width: 455px;
-  margin: 18px 0 20px;
-  color: var(--muted);
-  font-size: 10px;
-  line-height: 1.75;
-}
-.page-intro .eyebrow, .detail-heading .eyebrow {
-  margin: 0 0 18px;
-}
-.not-found > p:not(.eyebrow) {
-  max-width: 465px;
-  margin: 17px 0 0;
-  color: var(--muted);
-  font-size: 12px;
-  line-height: 1.8;
-}
-.detail-heading .eyebrow span {
-  padding-inline: 6px;
-  color: var(--faint);
-}
-.detail-content section > p:not(.eyebrow) {
-  margin: 0;
-  color: var(--muted);
-  font-size: 11px;
-  line-height: 1.85;
-}
-.detail-content .eyebrow {
-  margin: 0 0 12px;
-  font-size: 8px;
-}
-.not-found .eyebrow {
-  margin: 0 0 18px;
-}
-.assistant-panel .eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  margin: 0 0 6px;
-  font-size: 7px;
-}
+
 @media (max-width: 720px) {
   .section-intro {
     grid-template-columns: 1fr;
@@ -290,7 +205,7 @@ const services = computed(() => portfolioState.services || []);
 .list-index {
   padding-top: 4px;
   color: #a1a7b0;
-  font-size: 9px;
+  font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.16em;
 }
@@ -333,13 +248,7 @@ article:hover > .list-arrow {
 .service-list article h3 {
   font-size: 20px;
 }
-.contact-main > p:not(.eyebrow) {
-  max-width: 580px;
-  margin: 28px 0 0;
-  color: #707884;
-  font-size: 15px;
-  line-height: 1.8;
-}
+
 @media (max-width: 700px) {
 
   .section {
@@ -398,14 +307,11 @@ article:hover > .list-arrow {
   }
 }
 
-.section-intro > p, .service-list p, .contact-main > p:not(.eyebrow) { color: #a6afcc; }
+.section-intro > p, .service-list p,
 .section-intro h2 { color: #f3f4ff; }
 .eyebrow { color: #a78bfa; }
-.project-info-meta .eyebrow { color: #a78bfa; }
 .service-list article { border-color: rgba(190,202,255,.13); }
 .service-list h3 { color: #edf0ff; }
 .section-intro { position: relative; z-index: 1; }
-.service-list h3 { color: #edf0ff; }
 .service-list p { color: #a6afcc; }
-.section-intro h2 { color: #f3f4ff; }
 </style>

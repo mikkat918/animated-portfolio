@@ -42,6 +42,9 @@ function repository({
     topics: ["portfolio"],
     html_url: `https://github.com/${owner}/${name}`,
     homepage: "https://demo.example.com",
+    stargazers_count: 12,
+    forks_count: 3,
+    watchers_count: 8,
     default_branch: "main",
     created_at: "2025-01-01T00:00:00Z",
     updated_at,
@@ -102,6 +105,8 @@ test("fetches all pages, deduplicates by stable repository id, and applies eligi
   assert.equal(result.projects[0].title, "Basa Vara — Featured");
   assert.equal(result.projects[0].featured, true);
   assert.equal(result.projects[0].liveUrl, "https://basa.example.com/");
+  assert.equal(result.projects[0].stars, 12);
+  assert.equal(result.projects[0].forks, 3);
   assert.equal(result.projects[0].repoUrl, "https://github.com/mikkat918/basa-vara");
   assert.equal(typeof result.projects[0].fallbackImage, "string");
   assert.match(result.projects[0].fallbackImage, /^data:image\/svg\+xml,/);
@@ -163,7 +168,7 @@ test("rejects unsafe README image links and provides a generated safe fallback",
   const service = createGitHubProjectService({ username: "mikkat918", apiBase: API, fetchImpl: successfulFetch([repository()], readme) });
   const result = await service.getProjects();
   assert.match(result.projects[0].previewImage, /^data:image\/svg\+xml,/);
-  assert.match(decodeURIComponent(result.projects[0].previewImage.split(",")[1]), /PROJECT PREVIEW/);
+  assert.match(decodeURIComponent(result.projects[0].previewImage.split(",")[1]), /GENERATED PREVIEW/);
 
   const injected = decodeURIComponent(createFallbackPreview("<script>alert(1)</script>").split(",")[1]);
   assert.equal(injected.includes("<script>"), false);
@@ -217,11 +222,13 @@ test("configuration changes invalidate persisted snapshots so title and exclusio
       apiBase: API,
       fetchImpl: async () => response({}, { status: 403, headers: { "x-ratelimit-remaining": "0", "retry-after": "30" } }),
       cacheFile,
-      overrides: { overrides: { "95": { title: "Offline title" } } },
+      overrides: { overrides: { "95": { title: "Offline title", liveUrl: "https://portfolio.example.com" } } },
     }).getProjects();
     assert.equal(stale.stale, true);
     assert.equal(stale.projects[0].title, "Offline title");
     assert.equal(stale.projects[0].featured, false);
+    assert.equal(stale.projects[0].liveUrl, "https://portfolio.example.com/");
+    assert.match(decodeURIComponent(stale.projects[0].previewImage.split(",")[1]), /#ff6b35/i);
   } finally {
     await rm(directory, { recursive: true, force: true });
   }

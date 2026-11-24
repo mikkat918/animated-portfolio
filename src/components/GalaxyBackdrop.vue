@@ -46,7 +46,7 @@ onMounted(() => {
         phase: Math.random() * Math.PI * 2,
         speed: Math.random() * 0.0009 + 0.0002,
         drift: (Math.random() - 0.5) * 0.045,
-        tint: Math.random() > 0.86 ? "167, 139, 250" : "205, 220, 255",
+        tint: Math.random() > 0.84 ? "255, 107, 53" : "245, 235, 225",
       });
     }
   };
@@ -141,7 +141,7 @@ onUnmounted(() => {
   inset: 0;
   overflow: hidden;
   pointer-events: none;
-  background: #050816;
+  background: var(--bg);
 }
 canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
 .nebula {
@@ -154,14 +154,14 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
   will-change: transform;
   animation: nebula-drift 42s ease-in-out infinite alternate;
 }
-.nebula-violet { top: -38%; left: -22%; background: radial-gradient(circle, rgba(109,40,217,.72), transparent 67%); }
-.nebula-cyan { right: -28%; bottom: -48%; background: radial-gradient(circle, rgba(8,145,178,.6), transparent 68%); animation-delay: -18s; }
+.nebula-violet { top: -38%; left: -22%; background: radial-gradient(circle, rgba(255,107,53,.20), transparent 67%); }
+.nebula-cyan { right: -28%; bottom: -48%; background: radial-gradient(circle, rgba(255,184,107,.13), transparent 68%); animation-delay: -18s; }
 .galaxy-horizon {
   position: absolute;
   right: -25%; bottom: -52%; left: -25%; height: 75%;
   transform: perspective(500px) rotateX(63deg);
   transform-origin: center top;
-  background: radial-gradient(ellipse at center, rgba(76,29,149,.15), transparent 63%);
+  background: radial-gradient(ellipse at center, rgba(255,107,53,.10), transparent 63%);
   mask-image: linear-gradient(to bottom, #000, transparent 76%);
 }
 .shooting-star {
@@ -173,8 +173,8 @@ canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
   opacity: 0;
   transform: rotate(33deg);
   transform-origin: left center;
-  background: linear-gradient(90deg,transparent,rgba(196,181,253,.88),rgba(103,232,249,.42),transparent);
-  filter: drop-shadow(0 0 5px rgba(167,139,250,.5));
+  background: linear-gradient(90deg,transparent,rgba(255,184,107,.78),rgba(255,107,53,.4),transparent);
+  filter: drop-shadow(0 0 5px rgba(255,107,53,.32));
   animation: shooting-star 18s ease-in infinite;
 }
 .shooting-star-two { top: 37%; animation-delay: 9s; animation-duration: 23s; }
